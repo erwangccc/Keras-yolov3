@@ -1,0 +1,6 @@
+.git/
+venv/
+.idea/
+models/
+Networks/__pycache__/
+logs/
