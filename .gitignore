@@ -4,3 +4,4 @@ venv/
 models/
 Networks/__pycache__/
 logs/
+DetHelper/__pycache__/
