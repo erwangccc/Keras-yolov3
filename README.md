@@ -1,12 +1,20 @@
 # Keras-yolov3
 
-A Keras implementation of YOLOv3 (Tensorflow backend) inspired by [qqwweee/Keras-yolo3][https://github.com/qqwweee/keras-yolo3]
-
+A Keras implementation of YOLOv3 (Tensorflow backend) inspired by [qqwweee/Keras-yolo3](https://github.com/qqwweee/keras-yolo3])
 A object detection yolov3 repo implemented by tensorflow keras. You can train and predict your own dataset using this repo.
 
 ## Contents
 
-[TOC]
+- [Background](https://github.com/erwangccc/Keras-yolov3#background)
+- [Backbone](https://github.com/erwangccc/Keras-yolov3#backbone)
+- [TO DO](https://github.com/erwangccc/Keras-yolov3#to-do)
+- [Requirements](https://github.com/erwangccc/Keras-yolov3#requirements)
+- [Install](https://github.com/erwangccc/Keras-yolov3#install)
+- [Usage](https://github.com/erwangccc/Keras-yolov3#install)
+  - [Train](https://github.com/erwangccc/Keras-yolov3#train)
+  - [Predict](https://github.com/erwangccc/Keras-yolov3#predict)
+
+
 
 ## Background
 
@@ -51,10 +59,15 @@ $ cd kerasTest
 ### Train
 
 1. Generate your own annotation file and class names file.
+
    One row for one image;
+
    Row format: `image_file_path box1 box2 ... boxN`;
+
    Box format: `x_min,y_min,x_max,y_max,class_id` (no space).
+
    For VOC dataset, try `python voc_annotation.py`
+
    Here is an example:
 
    ```
@@ -64,6 +77,7 @@ $ cd kerasTest
    ```
 
 2. Make sure you have run `python convert.py -w yolov3.cfg yolov3.weights model_data/yolo_weights.h5`
+
    The file model_data/yolo_weights.h5 is used to load pretrained weights.
 
 3. Modify train.py and start training.
@@ -73,6 +87,8 @@ $ cd kerasTest
    ```
 
    You should modify `annotation_path` `classes_path` `anchors_path` to your custom path. Maybe you should modify some epoches number you train to get a better result.
+
+   Set `backone` to 'yolo' or other if you load 9 anchors. Default backbone is 'yolo'.
 
 ### Predict
 
@@ -86,3 +102,15 @@ python predict.py
 ```
 
 `-w` means just convert weights to keras model when you convert. 
+
+You might need to modify the model when you start to predict. 
+
+```
+yolov3 = YOLOV3((416, 416), load_model=2)
+```
+
+According to following list.
+
+```
+['yolo', 'tiny-yolo', 'mobile']
+```
