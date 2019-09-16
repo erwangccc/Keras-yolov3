@@ -21,7 +21,7 @@ from DetHelper.utilDet import get_random_data, get_anchors, get_classes
 
 def _main(backone='yolo'):
     annotation_path = 'YoloFiles/2012_val.txt'
-    log_dir = 'logs/000/train/'
+    log_dir = 'logs/train/'
     classes_path = 'YoloFiles/classes.txt'
     anchors_path = 'YoloFiles/anchors.txt'
     class_names = get_classes(classes_path)
